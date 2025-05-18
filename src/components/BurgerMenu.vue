@@ -1,5 +1,6 @@
 <template>
   <div class="burger-menu-container" :class="{ 'is-visible': isVisible }">
+<<<<<<< HEAD
     <ul class="burger-menu">
       <li>
         <div class="search-container">
@@ -8,6 +9,30 @@
             class="search-box" 
             placeholder="Search..." 
             dense 
+=======
+    <!-- Loading Screen -->
+    <div class="loading" v-if="isLoading">
+      <svg width="64px" height="48px">
+        <polyline
+          points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
+          id="back"
+        ></polyline>
+        <polyline
+          points="0.157 23.954, 14 23.954, 21.843 48, 43 0, 50 24, 64 24"
+          id="front"
+        ></polyline>
+      </svg>
+    </div>
+
+    <ul class="burger-menu">
+      <li>
+        <div class="search-container">
+          <q-input
+            v-model="searchQuery"
+            class="search-box"
+            placeholder="Search..."
+            dense
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
             standout
             @update:model-value="handleSearch"
           >
@@ -18,22 +43,31 @@
           <!-- Search Results Dropdown -->
           <div v-show="searchQuery" class="search-dropdown">
             <ul v-if="filteredPages.length > 0">
+<<<<<<< HEAD
               <li 
                 v-for="page in filteredPages" 
                 :key="page.path"
                 @click="navigateToPage(page.path)"
               >
+=======
+              <li v-for="page in filteredPages" :key="page.path" @click="navigateToPage(page.path)">
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
                 <q-icon :name="page.icon" class="page-icon" />
                 {{ page.name }}
               </li>
             </ul>
+<<<<<<< HEAD
             <div v-else class="no-results">
               No results found
             </div>
+=======
+            <div v-else class="no-results">No results found</div>
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
           </div>
         </div>
       </li>
       <ul class="burger-menu">
+<<<<<<< HEAD
         <li><router-link to="/ReportMissing">Report a Missing Person</router-link></li>
         <li><router-link to="/SearchMissing">Search for a Missing Person</router-link></li>
         <li><router-link to="/SearchMissing">Search for a Missing Person</router-link></li>
@@ -45,17 +79,49 @@
         <li><router-link to="/Contact">Contact Us</router-link></li>
       </ul>
 
+=======
+        <li @click.prevent="navigateWithLoader('/ReportMissing')">
+          <router-link to="/ReportMissing">Report a Found Person</router-link>
+        </li>
+        <li @click.prevent="navigateWithLoader('/SearchMissing')">
+          <router-link to="/SearchMissing">Search for a Missing Person</router-link>
+        </li>
+        <li @click.prevent="navigateWithLoader('/SearchReports')">
+          <router-link to="/SearchReports">Reports</router-link>
+        </li>
+        <li @click.prevent="navigateWithLoader('/donation')">
+          <router-link to="/donation">Donate</router-link>
+        </li>
+        <li @click.prevent="navigateWithLoader('/OurPlans')">
+          <router-link to="/OurPlans">Our Plans</router-link>
+        </li>
+        <li @click.prevent="navigateWithLoader('/AboutUs')">
+          <router-link to="/AboutUs">About Us</router-link>
+        </li>
+        <li @click.prevent="navigateWithLoader('/Contact')">
+          <router-link to="/Contact">Contact Us</router-link>
+        </li>
+      </ul>
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
     </ul>
   </div>
 </template>
 
 <script>
 export default {
+<<<<<<< HEAD
   name: "BurgerMenu",
   data() {
     return {
       isVisible: false,
       searchQuery: "",
+=======
+  name: 'BurgerMenu',
+  data() {
+    return {
+      isVisible: false,
+      searchQuery: '',
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
       filteredPages: [],
       availablePages: [
         { name: 'About Us', path: '/AboutUs', icon: 'info' },
@@ -66,6 +132,7 @@ export default {
         { name: 'Donate', path: '/donate', icon: 'monetization_on' },
         { name: 'Profile', path: '/ProfilePage', icon: 'person' },
         { name: 'Account Settings', path: '/AccountSettings', icon: 'settings' },
+<<<<<<< HEAD
         { name: 'Security', path: '/Security', icon: 'security' }
       ]
     };
@@ -93,12 +160,68 @@ export default {
     }
   },
 };
+=======
+        { name: 'Security', path: '/Security', icon: 'security' },
+      ],
+      isLoading: false,
+    }
+  },
+  methods: {
+    toggleMenu() {
+      this.isVisible = !this.isVisible
+    },
+    handleSearch(value) {
+      if (!value?.trim()) {
+        this.filteredPages = []
+        return
+      }
+
+      const query = value.toLowerCase()
+      this.filteredPages = this.availablePages.filter(
+        (page) =>
+          page.name.toLowerCase().includes(query) || page.path.toLowerCase().includes(query),
+      )
+    },
+    async navigateToPage(path) {
+      this.startLoading()
+      this.searchQuery = ''
+      this.isVisible = false
+      try {
+        await this.$router.push(path)
+      } finally {
+        this.stopLoading()
+      }
+    },
+    async navigateWithLoader(path) {
+      this.startLoading()
+      this.isVisible = false
+      try {
+        await this.$router.push(path)
+      } finally {
+        this.stopLoading()
+      }
+    },
+    startLoading() {
+      this.isLoading = true
+      document.body.style.overflow = 'hidden'
+    },
+    stopLoading() {
+      this.isLoading = false
+      document.body.style.overflow = ''
+    },
+  },
+}
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
 </script>
 
 <style lang="scss" scoped>
 .burger-menu-container {
   position: absolute;
+<<<<<<< HEAD
   top: 70px; /* Directly under navbar */
+=======
+  top: 70px;
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
   left: 0;
   width: 100%;
   background: #f2f0e9;
@@ -111,7 +234,11 @@ export default {
 }
 
 .is-visible {
+<<<<<<< HEAD
   max-height: 700px; /* Adjust as needed */
+=======
+  max-height: 700px;
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
 }
 
 .burger-menu {
@@ -200,4 +327,47 @@ export default {
   }
 }
 
+<<<<<<< HEAD
+=======
+/* Loading animation styles - added at the end */
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f2f0e99e;
+  z-index: 9999;
+}
+
+.loading svg polyline {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.loading svg polyline#back {
+  stroke: #98a2af;
+}
+
+.loading svg polyline#front {
+  stroke: #2c3539;
+  stroke-dasharray: 48, 144;
+  stroke-dashoffset: 192;
+  animation: dash_682 1.4s linear infinite;
+}
+
+@keyframes dash_682 {
+  72.5% {
+    opacity: 0;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
 </style>

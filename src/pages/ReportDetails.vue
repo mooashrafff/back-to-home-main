@@ -13,10 +13,17 @@
           <!-- Right Section with Details -->
           <div class="right-section">
             <q-btn flat icon="arrow_back" @click="goBack" class="back-button" color="dark" />
+<<<<<<< HEAD
 
             <h1 class="title">{{ report.missing_person_name || report.found_person_name }}</h1>
             <p class="report-id">Report #{{ report.id }}</p>
 
+=======
+            
+            <h1 class="title">{{ report.missing_person_name || report.found_person_name }}</h1>
+            <p class="report-id">Report #{{ report.id }}</p>
+            
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
             <div class="status-chip" :class="report.report_status.toLowerCase()">
               {{ report.report_status }}
             </div>
@@ -99,16 +106,25 @@
 </template>
 
 <script>
+<<<<<<< HEAD
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router' // Import useRoute
 import { supabase } from 'src/boot/supabase' // Import your Supabase instance
 import NavBar from 'src/components/NavBar.vue' // Import NavBar
 import FooterComponent from 'src/components/Footer.vue' // Import Footer
+=======
+import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router'; // Import useRoute
+import { supabase } from 'src/boot/supabase'; // Import your Supabase instance
+import NavBar from 'src/components/NavBar.vue'; // Import NavBar
+import FooterComponent from 'src/components/Footer.vue'; // Import Footer
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
 
 export default {
   name: 'ReportDetails',
   components: {
     NavBar,
+<<<<<<< HEAD
     FooterComponent,
   },
   setup() {
@@ -117,12 +133,23 @@ export default {
     const report = ref(null) // Initialize report as null
     const imageUrl = ref(route.query.imageUrl) // Get the image URL from the query
     const loading = ref(true) // Loading state
+=======
+    FooterComponent
+  },
+  setup() {
+    const route = useRoute(); // Get the route instance
+    const reportId = ref(route.params.id); // Get the report ID from the route
+    const report = ref(null); // Initialize report as null
+    const imageUrl = ref(route.query.imageUrl); // Get the image URL from the query
+    const loading = ref(true); // Loading state
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
 
     const fetchReportDetails = async (id) => {
       try {
         // Fetch the report type and necessary fields from the reports table
         const { data: reportData, error: reportError } = await supabase
           .from('reports')
+<<<<<<< HEAD
           .select(
             'id, report_type, created_at, report_status, reporter_name, reporter_contact, updated_at',
           )
@@ -130,10 +157,18 @@ export default {
           .single()
 
         if (reportError) throw reportError
+=======
+          .select('id, report_type, created_at, report_status, reporter_name, reporter_contact, updated_at')
+          .eq('id', id)
+          .single();
+
+        if (reportError) throw reportError;
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
 
         // Fetch both missing and found report details
         const { data: missingData, error: missingError } = await supabase
           .from('missing_reports')
+<<<<<<< HEAD
           .select(
             'missing_person_name, age, gender, last_seen_location, last_seen_date, description',
           )
@@ -142,10 +177,19 @@ export default {
 
         if (missingError && missingError.code !== 'PGRST116') {
           console.error('Error fetching missing report:', missingError)
+=======
+          .select('missing_person_name, age, gender, last_seen_location, last_seen_date, description')
+          .eq('missing_report_id', id)
+          .single();
+
+        if (missingError && missingError.code !== 'PGRST116') {
+          console.error('Error fetching missing report:', missingError);
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
         }
 
         const { data: foundData, error: foundError } = await supabase
           .from('found_reports')
+<<<<<<< HEAD
           .select(
             'found_person_name, age_estimate, gender, found_location, found_date, description',
           )
@@ -154,12 +198,21 @@ export default {
 
         if (foundError && foundError.code !== 'PGRST116') {
           console.error('Error fetching found report:', foundError)
+=======
+          .select('found_person_name, age_estimate, gender, found_location, found_date, description')
+          .eq('found_report_id', id)
+          .single();
+
+        if (foundError && foundError.code !== 'PGRST116') {
+          console.error('Error fetching found report:', foundError);
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
         }
 
         // Combine all the data
         report.value = {
           ...reportData,
           ...(missingData || {}),
+<<<<<<< HEAD
           ...(foundData || {}),
         }
       } catch (error) {
@@ -180,16 +233,46 @@ export default {
     const goBack = () => {
       window.history.back() // Go back to the previous page
     }
+=======
+          ...(foundData || {})
+        };
+
+      } catch (error) {
+        console.error('Error fetching report details:', error);
+      } finally {
+        loading.value = false;
+      }
+    };
+
+    onMounted(() => {
+      fetchReportDetails(reportId.value); // Fetch the report details
+    });
+
+    const formatDate = (date) => {
+      return new Date(date).toLocaleDateString();
+    };
+
+    const goBack = () => {
+      window.history.back(); // Go back to the previous page
+    };
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
 
     return {
       report,
       imageUrl, // Include imageUrl in the return object
       formatDate,
       goBack,
+<<<<<<< HEAD
       loading,
     }
   },
 }
+=======
+      loading
+    };
+  }
+};
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
 </script>
 
 <style scoped>
@@ -340,8 +423,12 @@ export default {
     grid-template-columns: 1fr;
   }
 }
+<<<<<<< HEAD
 </style>
 
 <style>
 /* Remove all custom notification styles */
 </style>
+=======
+</style>
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e

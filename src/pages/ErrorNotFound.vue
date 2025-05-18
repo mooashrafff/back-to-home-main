@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div
     class="fullscreen text-white text-center q-pa-md flex flex-center"
     style="background: #49596b"
@@ -12,14 +13,32 @@
 
       <div class="text-h5 q-mt-md" style="opacity: 0.6">
         Looks like you've wandered away from home
+=======
+  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
+    <div>
+      <div style="font-size: 30vh">
+        404
+      </div>
+
+      <div class="text-h2" style="opacity:.4">
+        Oops. Nothing here...
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
       </div>
 
       <q-btn
         class="q-mt-xl"
+<<<<<<< HEAD
         style="background: #ffffff; color: #49596b"
         unelevated
         to="/"
         label="Back to Home"
+=======
+        color="white"
+        text-color="blue"
+        unelevated
+        to="/"
+        label="Go Home"
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
         no-caps
       />
     </div>
@@ -29,6 +48,7 @@
 <script setup>
 //
 </script>
+<<<<<<< HEAD
 
 <style scoped>
 .error-container {
@@ -52,3 +72,5 @@
   }
 }
 </style>
+=======
+>>>>>>> 258747401fa8e456b1547191cdae29be9cf3587e
