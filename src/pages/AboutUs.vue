@@ -6,7 +6,7 @@ import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 const aboutText =
-  'Back2Home is a dedicated platform created by graduating students to address the critical issue of missing persons. What started as an academic project has evolved into a powerful tool that combines advanced technology with compassionate service to help reunite families.'
+  'Founded by graduating students, Back to Home is a compassionate platform dedicated to reuniting missing persons with their families. What began as an academic project has grown into a vital tool—leveraging technology and community to bring loved ones home.'
 
 const teamText =
   'Our team consists of dedicated individuals who bring diverse skills and unwavering commitment to the mission of finding missing persons. Together, we work to make every search count and every reunion possible.'
@@ -18,11 +18,11 @@ const teamMembers = ref([
   },
   {
     name: 'Team Member 2',
-    image: '/images/omar.jpg',
+    image: '/images/group.jpg',
   },
   {
     name: 'Team Member 3',
-    image: '/images/omar.jpg',
+    image: '/images/ashraf.png',
   },
 ])
 
