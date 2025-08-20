@@ -11,6 +11,14 @@ A sleek, high-performance application built with Quasar Framework, following bes
 
 ---
 
+## 🎯 Live Demo
+
+➡️ **[Experience the Live Demo](https://your-quasar-app.vercel.app)**
+
+> Note: The demo might take a few seconds to load on initial visit
+
+---
+
 ## ✨ Features
 
 - 🚀 Built with Quasar Framework for maximum performance
@@ -18,6 +26,9 @@ A sleek, high-performance application built with Quasar Framework, following bes
 - 🎨 Material Design components and dark mode support
 - ⚡ Fast development with Vite and hot reload
 - 🔧 ESLint & Prettier for code quality
+- 🌐 Internationalization (i18n) support
+- 📊 Chart visualization capabilities
+- 🔐 Authentication system ready
 
 ## 🚀 Quick Start
 
@@ -30,13 +41,5 @@ A sleek, high-performance application built with Quasar Framework, following bes
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/your-username/quasar-project.git
 cd quasar-project
-yarn
-# or
-npm install
-# or
-pnpm install
-
-Start the development server:
-quasar dev
