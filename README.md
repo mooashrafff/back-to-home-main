@@ -1,4 +1,6 @@
-# Quasar Project 🌌
+# Bach2Home 🌌
+<img width="2272" height="1152" alt="image" src="https://github.com/user-attachments/assets/4fa40926-e5bc-4b0a-b5a1-dac60cad1c2f" />
+
 
 > A modern, responsive Vue.js application built with Quasar Framework
 
@@ -13,9 +15,7 @@ A sleek, high-performance application built with Quasar Framework, following bes
 
 ## 🎯 Live Demo
 
-➡️ **[Experience the Live Demo](https://your-quasar-app.vercel.app)**
-
-> Note: The demo might take a few seconds to load on initial visit
+➡️ **[Experience the Live Demo](https://back-to-home.vercel.app/#/)**
 
 ---
 
